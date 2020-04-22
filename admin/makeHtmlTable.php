@@ -1,6 +1,6 @@
 <?php
 include "mysqliDB.php";
-require_once '/vendor/autoload.php';
+require_once './vendor/autoload.php';
 function makeTable(){
 
   $d = getdate();
