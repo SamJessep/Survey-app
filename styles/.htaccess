@@ -3,3 +3,4 @@ AuthName "restricted area"
 AuthUserFile ../.htpasswd
 require valid-user
 Allow from localhost
+Allow from http://survey-app80.herokuapp.com/
