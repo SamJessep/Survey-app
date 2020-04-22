@@ -1,5 +1,5 @@
 <?php
-include '../admin/db.php';
+include '../admin/mysqliDB.php';
 $p = $_POST;
 $postData = array('name' => $p['firstName'].' '.$p['lastName'], 'email' => $p['email'], 'question1'=> $p['question1'], 'contacted'=>$p['contacted'] == 'on' ? 'yes' : 'no');
 $tableData = array('name', 'email', 'question1', 'contacted');

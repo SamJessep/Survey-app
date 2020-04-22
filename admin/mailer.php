@@ -3,7 +3,15 @@ $SENDER = array('email' => "mailsurvey745@gmail.com", 'password' => "Cs153@ra152
 $SENDER_DISPLAY_NAME = "Survey results";
 $RECIPIENTS = array("samjessep77@gmail.com");
 
-$CONTENTS = array('subject' => 'Here are the survey results', 'html_message' => '<h1>This is a title</h1><p>survey body</p>', 'alt_message' => 'html not supported');
+$CONTENTS = array('subject' => 'Here are the survey results', 'html_message' => '<h1>Survey results</h1><p>attached to this email is the excel file with the survey results</p>', 'alt_message' => 'attached to this email is the excel file with the survey results');
+
+
+require "makeHtmlTable.php";
+$data = makeTable();
+$spreadsheet = $data['sheet'];
+$filename = $data['name'];
+$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+$writer->save($filename);
 
 if(isset($_POST['email'])){
   $RECIPIENTS = array($_POST['email']);
@@ -56,7 +64,7 @@ foreach ($RECIPIENTS as $key => $value) {
 //$mail->addBCC('bcc@example.com');
 
 // Add attachments it is optional
-// $mail->addAttachment('/var/tmp/file.tar.gz');
+  $mail->addAttachment($filename);
 // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');
 
 // Set email format to HTML if you want to send html document
@@ -79,6 +87,7 @@ foreach ($RECIPIENTS as $key => $value) {
    else
    {
     echo 'Message has been sent';
+    unlink($filename);
    }
 
    // here we can change value dynamically with php variable as per required

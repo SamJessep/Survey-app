@@ -17,25 +17,34 @@
       <br>
 
       <h3>Email survey results</h3>
-      <form class="container-fluid" action="src/mailer.php" method="post">
+      <form id="sendEmail" class="container-fluid">
         <div class='form-group'>
           <label class="sr-only" for="email">Email</label>
           <input class="form-control" id='email' type="text" name="email" value="" placeholder="Email">
         </div>
-          <input type="submit" name="" value="Email me the results">
+          <input type="submit" value="Email me the results" onclick="sendXls()">
       </form>
     </main>
 
 
     <script type="text/javascript">
       function downloadXls(){
+        window.location = 'download.php';
+      }
+
+      function sendXls(){
+        event.preventDefault();
+        var data = $("#sendEmail").serialize();
         $.ajax({
-          url: 'download.php',
-          data: '',
+          type: "POST",
+          url: 'mailer.php',
+          data: data,
           success: function(data){
-            console.log(data)
+            document.getElementById("email").value = '';
+            alert("email sent");
           }
         });
+        return false;
       }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
