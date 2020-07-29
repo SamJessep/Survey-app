@@ -1,9 +1,9 @@
 <?php
 // Create connection
 function connect(){
-  $servername = "us-cdbr-iron-east-01.cleardb.net";
-  $username = "baf9e69e29424b";
-  $password = "43524426";
+  $servername = "";
+  $username = "";
+  $password = "";
   $dbname = "heroku_f02742e3b22d69c";
   $conn = new mysqli($servername, $username, $password, $dbname);
   // Check connection
