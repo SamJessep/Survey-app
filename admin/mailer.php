@@ -1,7 +1,7 @@
 <?php
-$SENDER = array('email' => "mailsurvey745@gmail.com", 'password' => "Cs153@ra1521");
+$SENDER = array('email' => "GMAIL ADDRESS THAT SENDS RESULTS", 'password' => "ITS PASSWORD");
 $SENDER_DISPLAY_NAME = "Survey results";
-$RECIPIENTS = array("samjessep77@gmail.com");
+$RECIPIENTS = array("LIST OF EMAILS TO SEND RESULTS TO");
 
 $CONTENTS = array('subject' => 'Here are the survey results', 'html_message' => '<h1>Survey results</h1><p>attached to this email is the excel file with the survey results</p>', 'alt_message' => 'attached to this email is the excel file with the survey results');
 
